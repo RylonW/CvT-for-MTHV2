@@ -16,7 +16,13 @@
 |--------|------------|-------   |--------|------- |-------|------|------|-------|
 | CvT-13 | 224x224    | 97.27%   | 98.91% | 97.27% |97.13% |90.13%|90.07%|90.09% |
 
-:link:You can download all the models from (https://drive.google.com/drive/folders/1JlxLm0VVYAQCdgx-rcQMWMxfobPHrTXw?usp=sharing).
+:link:You can download all the models from (https://drive.google.com/drive/folders/1JlxLm0VVYAQCdgx-rcQMWMxfobPHrTXw?usp=sharing).  
+
+models should be placed at 
+
+``` sh
+CvT-for-MTHV2/OUTPUT/mthv2/cvt-13-224x224/
+```
 
 ### Training on local machine
 
