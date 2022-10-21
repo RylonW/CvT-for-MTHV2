@@ -1,0 +1,853 @@
+2022-09-24 15:29:21,244:[P:1331]:Rank[0/1] => collecting env info (might take some time)
+2022-09-24 15:29:23,168:[P:1331]:Rank[0/1] 
+PyTorch version: 1.7.1+cu110
+Is debug build: False
+CUDA used to build PyTorch: 11.0
+ROCM used to build PyTorch: N/A
+
+OS: Ubuntu 20.04.3 LTS (x86_64)
+GCC version: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
+Clang version: Could not collect
+CMake version: version 3.16.3
+
+Python version: 3.8 (64-bit runtime)
+Is CUDA available: True
+CUDA runtime version: Could not collect
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 3060 Ti
+Nvidia driver version: 510.85.02
+cuDNN version: Probably one of the following:
+/usr/lib/x86_64-linux-gnu/libcudnn.so.8.0.5
+/usr/lib/x86_64-linux-gnu/libcudnn_adv_infer.so.8.0.5
+/usr/lib/x86_64-linux-gnu/libcudnn_adv_train.so.8.0.5
+/usr/lib/x86_64-linux-gnu/libcudnn_cnn_infer.so.8.0.5
+/usr/lib/x86_64-linux-gnu/libcudnn_cnn_train.so.8.0.5
+/usr/lib/x86_64-linux-gnu/libcudnn_ops_infer.so.8.0.5
+/usr/lib/x86_64-linux-gnu/libcudnn_ops_train.so.8.0.5
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+
+Versions of relevant libraries:
+[pip3] numpy==1.22.3
+[pip3] torch==1.7.1+cu110
+[pip3] torchaudio==0.7.2
+[pip3] torchvision==0.8.2+cu110
+[conda] Could not collect
+2022-09-24 15:29:23,169:[P:1331]:Rank[0/1] Namespace(cfg='experiments/mthv2/cvt/cvt-13-224x224.yaml', distributed=False, local_rank=0, num_gpus=1, opts=['TEST.MODEL_FILE', 'OUTPUT/mthv2/cvt-13-224x224/model_best.pth'], port=9000)
+2022-09-24 15:29:23,169:[P:1331]:Rank[0/1] AMP:
+  ENABLED: True
+  MEMORY_FORMAT: nchw
+AUG:
+  COLOR_JITTER: [0.4, 0.4, 0.4, 0.1, 0.0]
+  DROPBLOCK_BLOCK_SIZE: 7
+  DROPBLOCK_KEEP_PROB: 1.0
+  DROPBLOCK_LAYERS: [3, 4]
+  GAUSSIAN_BLUR: 0.0
+  GRAY_SCALE: 0.0
+  INTERPOLATION: 2
+  MIXCUT: 1.0
+  MIXCUT_AND_MIXUP: False
+  MIXCUT_MINMAX: []
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RATIO: (0.75, 1.3333333333333333)
+  SCALE: (0.08, 1.0)
+  TIMM_AUG:
+    AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+    COLOR_JITTER: 0.4
+    HFLIP: 0.5
+    INTERPOLATION: bicubic
+    RE_COUNT: 1
+    RE_MODE: pixel
+    RE_PROB: 0.25
+    RE_SPLIT: False
+    USE_LOADER: False
+    USE_TRANSFORM: False
+    VFLIP: 0.0
+BASE: ['']
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  DATASET: mthv2
+  DATA_FORMAT: jpg
+  LABELMAP: 
+  ROOT: DATASET/mthv2/
+  SAMPLER: default
+  TARGET_SIZE: -1
+  TEST_SET: test
+  TEST_TSV_LIST: []
+  TRAIN_SET: train
+  TRAIN_TSV_LIST: []
+DATA_DIR: 
+DEBUG:
+  DEBUG: False
+DIST_BACKEND: nccl
+ED:
+  CLASS2INDEX_PATH: OUTPUT/mthv2/cvt-13-224x224/class_to_idx.txt
+  ROOT: DATASET/mthv2/ED/
+FINETUNE:
+  BASE_LR: 0.003
+  BATCH_SIZE: 256
+  EVAL_EVERY: 3000
+  FINETUNE: False
+  FROZEN_LAYERS: []
+  LR_SCHEDULER:
+    DECAY_TYPE: step
+  TRAIN_MODE: True
+  USE_TRAIN_AUG: False
+GPUS: (0,)
+INPUT:
+  MEAN: [0.485, 0.456, 0.406]
+  STD: [0.229, 0.224, 0.225]
+LOSS:
+  LABEL_SMOOTHING: 0.1
+  LOSS: softmax
+MODEL:
+  INIT_WEIGHTS: True
+  NAME: cls_cvt
+  NUM_CLASSES: 6065
+  PRETRAINED: 
+  PRETRAINED_LAYERS: ['*']
+  SPEC:
+    ATTN_DROP_RATE: [0.0, 0.0, 0.0]
+    CLS_TOKEN: [False, False, True]
+    DEPTH: [1, 2, 10]
+    DIM_EMBED: [64, 192, 384]
+    DROP_PATH_RATE: [0.0, 0.0, 0.1]
+    DROP_RATE: [0.0, 0.0, 0.0]
+    INIT: trunc_norm
+    KERNEL_QKV: [3, 3, 3]
+    MLP_RATIO: [4.0, 4.0, 4.0]
+    NUM_HEADS: [1, 3, 6]
+    NUM_STAGES: 3
+    PADDING_KV: [1, 1, 1]
+    PADDING_Q: [1, 1, 1]
+    PATCH_PADDING: [2, 1, 1]
+    PATCH_SIZE: [7, 3, 3]
+    PATCH_STRIDE: [4, 2, 2]
+    POS_EMBED: [False, False, False]
+    QKV_BIAS: [True, True, True]
+    QKV_PROJ_METHOD: ['dw_bn', 'dw_bn', 'dw_bn']
+    STRIDE_KV: [2, 2, 2]
+    STRIDE_Q: [1, 1, 1]
+MODEL_SUMMARY: False
+MULTIPROCESSING_DISTRIBUTED: True
+NAME: cvt-13-224x224
+OUTPUT_DIR: OUTPUT/
+PIN_MEMORY: True
+PRINT_FREQ: 500
+RANK: 0
+TEST:
+  BATCH_SIZE_PER_GPU: 16
+  CENTER_CROP: True
+  IMAGE_SIZE: [224, 224]
+  INTERPOLATION: 3
+  MODEL_FILE: OUTPUT/mthv2/cvt-13-224x224/model_best.pth
+  REAL_LABELS: False
+  VALID_LABELS: 
+TRAIN:
+  AUTO_RESUME: True
+  BATCH_SIZE_PER_GPU: 64
+  BEGIN_EPOCH: 0
+  CHECKPOINT: 
+  CLIP_GRAD_NORM: 0.0
+  DETECT_ANOMALY: False
+  END_EPOCH: 300
+  EVAL_BEGIN_EPOCH: 0
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  IMAGE_SIZE: [224, 224]
+  LR: 0.00025
+  LR_SCHEDULER:
+    ARGS:
+      cooldown_epochs: 10
+      decay_rate: 0.1
+      epochs: 300
+      min_lr: 1e-05
+      sched: cosine
+      warmup_epochs: 5
+      warmup_lr: 1e-06
+    METHOD: timm
+  MOMENTUM: 0.9
+  NESTEROV: True
+  OPTIMIZER: adamW
+  OPTIMIZER_ARGS:
+    
+  SAVE_ALL_MODELS: False
+  SCALE_LR: True
+  SHUFFLE: True
+  WD: 0.05
+  WITHOUT_WD_LIST: ['bn', 'bias', 'ln']
+VERBOSE: True
+WORKERS: 6
+2022-09-24 15:29:23,172:[P:1331]:Rank[0/1] => using 1 GPUs
+2022-09-24 15:29:23,172:[P:1331]:Rank[0/1] => saving config into: OUTPUT/mthv2/cvt-13-224x224/config.yaml
+2022-09-24 15:29:23,181:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,182:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,182:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,182:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,182:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,182:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,183:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,183:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,183:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,184:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,184:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,184:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,201:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,202:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,202:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,204:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,204:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,205:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,205:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,208:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,209:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,212:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,212:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,214:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,215:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,216:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,216:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,217:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,217:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,218:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,218:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,220:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,220:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,223:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,223:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,226:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,435:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,436:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,437:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,439:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,439:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,442:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,442:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,444:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,444:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,451:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,451:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,457:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,457:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,460:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,460:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,462:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,462:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,465:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,465:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,467:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,468:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,474:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,474:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,479:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,480:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,482:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,482:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,484:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,484:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,486:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,486:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,488:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,488:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,494:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,494:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,499:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,499:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,501:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,501:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,503:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,503:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,505:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,506:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,508:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,508:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,513:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,513:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,518:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,519:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,521:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,521:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,523:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,523:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,525:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,525:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,527:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,527:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,533:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,533:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,538:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,538:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,540:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,540:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,542:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,542:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,545:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,545:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,547:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,547:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,552:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,552:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,557:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,558:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,560:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,560:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,562:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,562:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,564:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,564:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,566:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,566:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,572:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,572:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,577:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,577:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,579:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,580:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,582:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,582:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,584:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,584:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,586:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,586:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,591:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,591:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,596:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,597:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,599:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,599:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,601:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,601:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,603:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,603:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,605:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,605:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,610:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,611:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,616:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,616:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,618:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,618:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,620:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,620:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,622:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,623:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,625:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,625:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,630:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:23,630:[P:1331]:Rank[0/1] => init weight of Linear from trunc norm
+2022-09-24 15:29:23,635:[P:1331]:Rank[0/1] => init bias of Linear to zeros
+2022-09-24 15:29:26,692:[P:1331]:Rank[0/1] => load model file: OUTPUT/mthv2/cvt-13-224x224/model_best.pth
+2022-09-24 15:29:26,835:[P:1331]:Rank[0/1] => ConvolutionalVisionTransformer(
+  (stage0): VisionTransformer(
+    (patch_embed): ConvEmbed(
+      (proj): Conv2d(3, 64, kernel_size=(7, 7), stride=(4, 4), padding=(2, 2))
+      (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (blocks): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=64, bias=False)
+            (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=64, bias=False)
+            (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=64, bias=False)
+            (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=64, out_features=64, bias=True)
+          (proj_k): Linear(in_features=64, out_features=64, bias=True)
+          (proj_v): Linear(in_features=64, out_features=64, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=256, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=256, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+  )
+  (stage1): VisionTransformer(
+    (patch_embed): ConvEmbed(
+      (proj): Conv2d(64, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (blocks): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=192, bias=False)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=192, bias=False)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=192, out_features=192, bias=True)
+          (proj_k): Linear(in_features=192, out_features=192, bias=True)
+          (proj_v): Linear(in_features=192, out_features=192, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=192, out_features=192, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=192, out_features=768, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=768, out_features=192, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=192, bias=False)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=192, bias=False)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=192, out_features=192, bias=True)
+          (proj_k): Linear(in_features=192, out_features=192, bias=True)
+          (proj_v): Linear(in_features=192, out_features=192, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=192, out_features=192, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=192, out_features=768, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=768, out_features=192, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+  )
+  (stage2): VisionTransformer(
+    (patch_embed): ConvEmbed(
+      (proj): Conv2d(192, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (blocks): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.011)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.022)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.033)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (4): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.044)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (5): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.056)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (6): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.067)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (7): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.078)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (8): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.089)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (9): Block(
+        (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (conv_proj_q): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_k): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (conv_proj_v): Sequential(
+            (conv): Conv2d(384, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=384, bias=False)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (rearrage): Rearrange('b c h w -> b (h w) c')
+          )
+          (proj_q): Linear(in_features=384, out_features=384, bias=True)
+          (proj_k): Linear(in_features=384, out_features=384, bias=True)
+          (proj_v): Linear(in_features=384, out_features=384, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=384, out_features=384, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.100)
+        (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=384, out_features=1536, bias=True)
+          (act): QuickGELU()
+          (fc2): Linear(in_features=1536, out_features=384, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+  )
+  (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+  (head): Linear(in_features=384, out_features=6065, bias=True)
+)
+2022-09-24 15:29:26,840:[P:1331]:Rank[0/1] Trainable Model Total Parameter: 	21.9M
+2022-09-24 15:29:26,840:[P:1331]:Rank[0/1] => start testing ED
+2022-09-24 15:29:26,892:[P:1331]:Rank[0/1] sentences number:82006
+2022-09-24 15:29:26,892:[P:1331]:Rank[0/1] => 譯經润文推誠保德習金紫光祿太天行尚書兵部侍郎兼宗卿脩國##國#郡開國食邑主晨###阡倉趙安仁
+2022-09-24 15:29:26,892:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:27,377:[P:1331]:Rank[0/1] => 十徑十大推誠衛德寳十紫光十行憍行
+2022-09-24 15:29:27,450:[P:1331]:Rank[0/1] => 常二莫部等十兼''脩國十轉下十'
+2022-09-24 15:29:27,585:[P:1331]:Rank[0/1] => 淨國容巳若意摩集上得賔題支得
+2022-09-24 15:29:27,653:[P:1331]:Rank[0/1] => 勇健
+2022-09-24 15:29:27,653:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:28,068:[P:1331]:Rank[0/1] => 勇健
+2022-09-24 15:29:28,133:[P:1331]:Rank[0/1] => 丗成就品第十
+2022-09-24 15:29:28,134:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:28,552:[P:1331]:Rank[0/1] => 丗成就品第十
+2022-09-24 15:29:28,622:[P:1331]:Rank[0/1] => 淨解知信入者我不說是人趣向地獄及諸
+2022-09-24 15:29:28,622:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:29,036:[P:1331]:Rank[0/1] => 淨解知信入者我不說是人趣向地獄及
+2022-09-24 15:29:29,112:[P:1331]:Rank[0/1] => 諸
+2022-09-24 15:29:29,181:[P:1331]:Rank[0/1] => 尊若色雜染清淨若受想行識雜染
+2022-09-24 15:29:29,181:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:29,594:[P:1331]:Rank[0/1] => 尊若色雜染清淨若受想行識雜染
+2022-09-24 15:29:29,665:[P:1331]:Rank[0/1] => 根利過於四果心求前進得證縁覺無有
+2022-09-24 15:29:29,665:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:30,106:[P:1331]:Rank[0/1] => 根利過於四果心求前進得證縁覺無有
+2022-09-24 15:29:30,177:[P:1331]:Rank[0/1] => 佛不共法非有故當知作意亦非有佛十力
+2022-09-24 15:29:30,177:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:30,600:[P:1331]:Rank[0/1] => 佛不共法非有故當知作意亦非有佛十
+2022-09-24 15:29:30,650:[P:1331]:Rank[0/1] => 力
+2022-09-24 15:29:30,716:[P:1331]:Rank[0/1] => 融一多等此諸二法皆一之時名一時也
+2022-09-24 15:29:30,717:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:31,119:[P:1331]:Rank[0/1] => 融'多等此諸二法皆'之時名'時也
+2022-09-24 15:29:31,201:[P:1331]:Rank[0/1] => 訶薩即無相無願解脫門若属生死若
+2022-09-24 15:29:31,202:[P:1331]:Rank[0/1] => ED dataset is building
+2022-09-24 15:29:31,699:[P:1331]:Rank[0/1] => 訶薩即無相無願解脫門若属生死若
+2022-09-24 15:29:31,778:[P:1331]:Rank[0/1] => 薩非離八十随好真如有菩薩摩訶
+2022-09-24 15:29:31,779:[P:1331]:Rank[0/1] => ED dataset is building
