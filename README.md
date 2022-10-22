@@ -6,6 +6,7 @@
 # Dataset
   MTHV2 train:test = 4:1  
   :link:Download processed dataset:(https://1drv.ms/u/s!Aj6X7kgt6NgZjRhnhV_dKIRZLYL5?e=ZUfgGI)
+  The dataset used for calculating AR and CR metrics is also included.
   
 # Code
   Configurations have been revised for MTHV2
